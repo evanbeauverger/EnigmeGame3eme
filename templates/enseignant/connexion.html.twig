@@ -1,19 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jeu d'énigmes informatique'{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
 <style>
     * { text-align: center; }
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    a { color: blue; }
+    a { margin: 40px; color: blue;}
 </style>
 
 <div class="example-wrapper">
-    <h1>Bienvenue dans le jeu d'énigmes informatique</h1>
+    <h1>Connexion</h1>
 
-    <a href="/connexion">Enseignant</a><br>
-    <a href="/equipe">Jouer</a>
+    Identifiant : <input type="text" name="id" /><br/>
+    Mot de passe : <input type="password" name="pass" /><br/>
+    <a href="/">Retour</a>
+    <a href="/enseignant">Valider</a>
 </div>
 {% endblock %}

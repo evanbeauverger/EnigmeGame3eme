@@ -14,17 +14,15 @@ final class JeuEnigmeController extends AbstractController
         return $this->render('jeu_enigme/index.html.twig');
     }
 
+    #[Route('/equipe', name: 'app_equipe')]
+    public function equipe(): Response
+    {
+        return $this->render('jeu_enigme/equipe.html.twig');
+    }
+
     #[Route('/jeu', name: 'app_jeu')]
     public function jeu(): Response
     {
         return $this->render('jeu_enigme/jeu.html.twig');
-    }
-
-    #[Route('/jeu/enigme/{$id}', name: 'app_enigme')]
-    public function enigme(int $id): Response
-    {
-        return $this->render('jeu_enigme/jeu.html.twig', [
-            'id' => $id
-        ]);
     }
 }

@@ -8,6 +8,12 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class EnseignantController extends AbstractController
 {
+    #[Route('/connexion', name: 'app_connexion')]
+    public function connexion(): Response
+    {
+        return $this->render('enseignant/connexion.html.twig');
+    }
+
     #[Route('/enseignant', name: 'app_enseignant')]
     public function index(): Response
     {
