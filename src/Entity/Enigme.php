@@ -6,6 +6,7 @@ use App\Repository\EnigmeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EnigmeRepository::class)]
+#[ORM\Table(name: 'tbl_enigme')]
 class Enigme
 {
     #[ORM\Id]

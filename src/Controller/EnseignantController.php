@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Enseignant;
 use App\Form\EnseignantType;
 use App\Repository\EnseignantRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -18,16 +19,17 @@ final class EnseignantController extends AbstractController
     ){}
 
     #[Route('/enseignant/create', name: 'app_create')]
-    public function create(Request $request): Response
+    public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
         $enseignant = new Enseignant();
         $form = $this->formFactory->create(EnseignantType::class, $enseignant);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->EnseignantRepository->save($enseignant, true);
+            $entityManager->persist($enseignant);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('/connexion');
+            return $this->redirectToRoute('app_connexion');
         }
 
         return $this->render('enseignant/create.html.twig', ['form' => $form->createView()]);

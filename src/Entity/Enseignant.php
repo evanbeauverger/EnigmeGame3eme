@@ -6,6 +6,7 @@ use App\Repository\EnseignantRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EnseignantRepository::class)]
+#[ORM\Table(name: 'tbl_enseignant')]
 class Enseignant
 {
     #[ORM\Id]
