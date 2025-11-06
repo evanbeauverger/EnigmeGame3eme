@@ -5,10 +5,10 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: 'tbl_user')]
 class User
 {
     #[ORM\Id]
@@ -17,21 +17,33 @@ class User
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $name = null;
+    private ?string $email = null;
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Role $role = null;
+    #[ORM\Column(type: Types::ARRAY)]
+    private array $role = [];
+
+    #[ORM\Column(length: 50)]
+    private ?string $password = null;
+
+    #[ORM\Column]
+    private ?bool $is_verified = null;
 
     /**
-     * @var Collection<int, Enigme>
+     * @var Collection<int, Enigma>
      */
-    #[ORM\OneToMany(targetEntity: Enigme::class, mappedBy: 'createur')]
-    private Collection $enigmes;
+    #[ORM\ManyToMany(targetEntity: Enigma::class, mappedBy: 'user')]
+    private Collection $enigmas;
+
+    /**
+     * @var Collection<int, Game>
+     */
+    #[ORM\ManyToMany(targetEntity: Game::class, mappedBy: 'user')]
+    private Collection $games;
 
     public function __construct()
     {
-        $this->enigmes = new ArrayCollection();
+        $this->enigmas = new ArrayCollection();
+        $this->games = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -39,55 +51,103 @@ class User
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getEmail(): ?string
     {
-        return $this->name;
+        return $this->email;
     }
 
-    public function setName(string $name): static
+    public function setEmail(string $email): static
     {
-        $this->name = $name;
+        $this->email = $email;
 
         return $this;
     }
 
-    public function getRole(): ?Role
+    public function getRole(): array
     {
         return $this->role;
     }
 
-    public function setRole(?Role $role): static
+    public function setRole(array $role): static
     {
         $this->role = $role;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Enigme>
-     */
-    public function getEnigmes(): Collection
+    public function getPassword(): ?string
     {
-        return $this->enigmes;
+        return $this->password;
     }
 
-    public function addEnigme(Enigme $enigme): static
+    public function setPassword(string $password): static
     {
-        if (!$this->enigmes->contains($enigme)) {
-            $this->enigmes->add($enigme);
-            $enigme->setCreateur($this);
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function isVerified(): ?bool
+    {
+        return $this->is_verified;
+    }
+
+    public function setIsVerified(bool $is_verified): static
+    {
+        $this->is_verified = $is_verified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Enigma>
+     */
+    public function getEnigmas(): Collection
+    {
+        return $this->enigmas;
+    }
+
+    public function addEnigma(Enigma $enigma): static
+    {
+        if (!$this->enigmas->contains($enigma)) {
+            $this->enigmas->add($enigma);
+            $enigma->addUser($this);
         }
 
         return $this;
     }
 
-    public function removeEnigme(Enigme $enigme): static
+    public function removeEnigma(Enigma $enigma): static
     {
-        if ($this->enigmes->removeElement($enigme)) {
-            // set the owning side to null (unless already changed)
-            if ($enigme->getCreateur() === $this) {
-                $enigme->setCreateur(null);
-            }
+        if ($this->enigmas->removeElement($enigma)) {
+            $enigma->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Game>
+     */
+    public function getGames(): Collection
+    {
+        return $this->games;
+    }
+
+    public function addGame(Game $game): static
+    {
+        if (!$this->games->contains($game)) {
+            $this->games->add($game);
+            $game->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGame(Game $game): static
+    {
+        if ($this->games->removeElement($game)) {
+            $game->removeUser($this);
         }
 
         return $this;

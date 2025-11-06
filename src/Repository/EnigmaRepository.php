@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Enigme;
+use App\Entity\Enigma;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Enigme>
+ * @extends ServiceEntityRepository<Enigma>
  */
-class EnigmeRepository extends ServiceEntityRepository
+class EnigmaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Enigme::class);
+        parent::__construct($registry, Enigma::class);
     }
 
     //    /**
-    //     * @return Enigme[] Returns an array of Enigme objects
+    //     * @return Enigma[] Returns an array of Enigma objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class EnigmeRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Enigme
+    //    public function findOneBySomeField($value): ?Enigma
     //    {
     //        return $this->createQueryBuilder('e')
     //            ->andWhere('e.exampleField = :val')
