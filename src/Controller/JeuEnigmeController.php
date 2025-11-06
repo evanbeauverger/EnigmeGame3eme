@@ -27,7 +27,7 @@ final class JeuEnigmeController extends AbstractController
     #[Route('/equipe', name: 'app_equipe')]
     public function equipe(): Response
     {
-        return $this->render('jeu_enigme/equipe.html.twig');
+        return $this->render('user/equipe.html.twig');
     }
 
     #[Route('/team_create', name: 'app_team_create')]
