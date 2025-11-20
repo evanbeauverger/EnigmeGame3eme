@@ -15,8 +15,14 @@
 
     Identifiant : <input type="text" name="id" /><br/>
     Mot de passe : <input type="password" name="pass" /><br/>
-    <a href="/">Retour</a>
-    <a href="/enseignant">Valider</a><br/>
-    <a href="/enseignant/create">Créer un compte</a>
+    <form action="/">
+        <button type="submit" class="btn btn-primary">Retour</button>
+    </form>
+    <form action="/teacher">
+        <button type="submit" class="btn btn-primary">Valider</button><br/><br/>
+    </form>
+    <form action="/user/new">
+        <button type="submit" class="btn btn-primary">Créez un compte</button><br/><br/>
+    </form>
 </div>
 {% endblock %}

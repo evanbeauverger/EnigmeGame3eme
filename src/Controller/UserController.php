@@ -22,6 +22,12 @@ final class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/connexion', name: 'app_connexion', methods: ['GET', 'POST'])]
+    public function login(): Response
+    {
+        return $this->render('user/connexion.html.twig');
+    }
+
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

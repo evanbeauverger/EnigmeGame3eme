@@ -8,6 +8,9 @@
 
     {{ include('team/_form.html.twig') }}
 
-    <a href="{{ path('app_team_index') }}">back to list</a>
+    <a href="{{ path('app_team_index') }}">back to list</a><br/><br/>
+    <form action="/equipe">
+        <button type="submit" class="btn btn-primary">Retour</button>
+    </form>
 </center>
 {% endblock %}
