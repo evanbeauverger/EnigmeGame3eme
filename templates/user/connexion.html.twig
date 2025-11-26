@@ -11,15 +11,17 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Connexion</h1>
+    <h1>Connexion</h1><br/>
 
-    Identifiant : <input type="text" name="id" /><br/>
-    Mot de passe : <input type="password" name="pass" /><br/>
-    <form action="/">
-        <button type="submit" class="btn btn-primary">Retour</button>
-    </form>
-    <form action="/teacher">
+    
+    
+    <form action="/teacher" method="post">
+        Identifiant : <input type="text" name="id" required /><br/><br/>
+        Mot de passe : <input type="password" name="pass" required /><br/><br/>
         <button type="submit" class="btn btn-primary">Valider</button><br/><br/>
+    </form>
+    <form action="/">
+        <button type="submit" class="btn btn-primary">Retour</button><br/><br/>
     </form>
     <form action="/user/new">
         <button type="submit" class="btn btn-primary">Créez un compte</button><br/><br/>

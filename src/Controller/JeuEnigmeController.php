@@ -47,9 +47,21 @@ final class JeuEnigmeController extends AbstractController
         return $this->render('jeu_enigme/create.html.twig', ['form' => $form->createView()]);
     }
 
-    #[Route('/jeu', name: 'app_jeu')]
-    public function jeu(): Response
+    #[Route('/jeu1', name: 'app_jeu1')]
+    public function jeu1(): Response
     {
-        return $this->render('jeu_enigme/jeu.html.twig');
+        return $this->render('jeu_enigme/jeu1.html.twig');
+    }
+
+    #[Route('/jeu2', name: 'app_jeu2')]
+    public function jeu2(): Response
+    {
+        return $this->render('jeu_enigme/jeu2.html.twig');
+    }
+
+    #[Route('/enigma1', name: 'app_enigma1')]
+    public function engime1(): Response
+    {
+        return $this->render('jeu_enigme/enigma1.html.twig');
     }
 }

@@ -17,7 +17,7 @@ class Team
     #[ORM\Column(length: 50)]
     private ?string $name = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $position = null;
 
     #[ORM\Column]
