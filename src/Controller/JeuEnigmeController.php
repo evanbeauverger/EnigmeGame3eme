@@ -59,9 +59,51 @@ final class JeuEnigmeController extends AbstractController
         return $this->render('jeu_enigme/jeu2.html.twig');
     }
 
+    #[Route('/jeu3', name: 'app_jeu3')]
+    public function jeu3(): Response
+    {
+        return $this->render('jeu_enigme/jeu3.html.twig');
+    }
+
+    #[Route('/jeu4', name: 'app_jeu4')]
+    public function jeu4(): Response
+    {
+        return $this->render('jeu_enigme/jeu4.html.twig');
+    }
+
+    #[Route('/jeu5', name: 'app_jeu5')]
+    public function jeu5(): Response
+    {
+        return $this->render('jeu_enigme/jeu5.html.twig');
+    }
+
     #[Route('/enigma1', name: 'app_enigma1')]
     public function engime1(): Response
     {
         return $this->render('jeu_enigme/enigma1.html.twig');
+    }
+
+    #[Route('/enigma2', name: 'app_enigma2')]
+    public function engime2(): Response
+    {
+        return $this->render('jeu_enigme/enigma2.html.twig');
+    }
+
+    #[Route('/enigma3', name: 'app_enigma3')]
+    public function engime3(): Response
+    {
+        return $this->render('jeu_enigme/enigma3.html.twig');
+    }
+
+    #[Route('/enigma4', name: 'app_enigma4')]
+    public function engime4(): Response
+    {
+        return $this->render('jeu_enigme/enigma4.html.twig');
+    }
+
+    #[Route('/enigma5', name: 'app_enigma5')]
+    public function engime5(): Response
+    {
+        return $this->render('jeu_enigme/enigma5.html.twig');
     }
 }

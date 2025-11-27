@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enigme 1{% endblock %}
+
+{% block body %}
+<style>
+    * { text-align: center; }
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    a { color: blue; }
+    body { background-color: yellow; }
+    th { width: 25%; height: 250px;}
+    .monTableau {
+        border-collapse: collapse;
+    }
+    .monTableau td, .monTableau th {
+        border: 1px solid black;
+    }
+
+</style>
+
+<h2>Enigme 3 : Précise si ces applications utilisent l'intelligence artificielle ou pas ?</h2><br/><br/>
+
+<table class="monTableau">
+    <tr>
+        <th>Assistant intelligent</th>
+        <th>Robot assemblant les parties d'une voiture</th>
+        <th>Robot de cuisine</th>
+        <th>Reconnaissance de plantes</th>
+    </tr>
+    <tr>
+        <th>Véhicule spatial</th>
+        <th>Traducteur automatique en ligne</th>
+        <th>Detecteur de mensonge</th>
+    </tr>
+</table>
+<br/>
+<form action="/jeu4">
+    <button type="submit" class="btn btn-primary">Vérifier</button><br/><br/>
+</form>
+<form action="/jeu3">
+    <button type="submit" class="btn btn-primary">Abandonner</button>
+</form>
+
+{% endblock %}
