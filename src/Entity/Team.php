@@ -20,7 +20,7 @@ class Team
     #[ORM\Column(nullable: true)]
     private ?int $position = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $current_enigma = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
