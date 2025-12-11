@@ -11,11 +11,19 @@
 <div>
     <h1>Enseignant</h1>
     <ul>
-        <li><a href="/enigma">Gerer domaine de jeu</a></li>
-        <li><a href="/team">Parties en jeu</a></li>
-        <li><a href="/enseignant/historique">Historique des parties</a></li>
+        <form action="/enigma">
+            <li><button type="submit" class="btn btn-primary">Gerer domaine de jeu</button></li><br/>
+        </form>
+        <form action="/team">
+            <li><button type="submit" class="btn btn-primary">Parties en jeu</button></li><br/>
+        </form>
+        <form action="/teacher/historique">
+            <li><button type="submit" class="btn btn-primary">Historique des parties</button></li><br/>
+        </form>
     </ul>
-    <a href="/teacher">Retour</a>
+    <form action="/teacher">
+        <button type="submit" class="btn btn-primary">Retour</button><br/><br/>
+    </form>
     
 </div>
 {% endblock %}
