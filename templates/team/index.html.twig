@@ -3,15 +3,15 @@
 {% block title %}Team index{% endblock %}
 
 {% block body %}
-    <h1>Team index</h1>
+    <h1>Gestion des équipes</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Position</th>
-                <th>Current_enigma</th>
+                <th>Enigme actuelle</th>
                 <th>Note</th>
                 <th>actions</th>
             </tr>
@@ -38,4 +38,5 @@
     </table>
 
     <a href="{{ path('app_team_new') }}">Create new</a>
+    <a href="/teacher/gestion">Retour</a>
 {% endblock %}

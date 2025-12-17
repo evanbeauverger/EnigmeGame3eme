@@ -3,16 +3,16 @@
 {% block title %}Enigma index{% endblock %}
 
 {% block body %}
-    <h1>Enigma index</h1>
+    <h1>Gestion des énigmes</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Order_</th>
-                <th>Title</th>
+                <th>Ordre</th>
+                <th>Titre</th>
                 <th>Instruction</th>
-                <th>Secretcode</th>
+                <th>code secret</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -38,4 +38,5 @@
     </table>
 
     <a href="{{ path('app_enigma_new') }}">Create new</a>
+    <a href="/teacher/gestion">retour</a>
 {% endblock %}
