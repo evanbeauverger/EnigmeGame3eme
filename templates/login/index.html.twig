@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
+    
     <style>
         * { text-align: center; }
     </style>
 
     <h1>Connexion</h1>
+
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
     <br/>
 
     <form action="{{ path('app_login') }}" method="post" style="display:inline-block;">
@@ -21,7 +23,9 @@
         <input type="password" id="password" name="_password" required>
         <br/><br/>
 
-        <input type="hidden" name="app_gestion" value="/account">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <input type="hidden" name="_target_path" value="/teacher/gestion">
 
         <button type="submit" class="btn btn-primary">Valider</button>
     </form>

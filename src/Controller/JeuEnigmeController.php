@@ -78,15 +78,43 @@ final class JeuEnigmeController extends AbstractController
     }
 
     #[Route('/enigma1', name: 'app_enigma1')]
-    public function engime1(): Response
+    public function engime1(Request $request): Response
     {
-        return $this->render('jeu_enigme/enigma1.html.twig');
+        $resultat = null;
+
+        if ($request->isMethod('POST')) {
+            $reponse = strtolower(trim($request->request->get('reponse')));
+
+            if ($reponse === 'openai') {
+                return $this->render('jeu_enigme/jeu2.html.twig');
+            } else {
+                $resultat = "Mauvaise réponse, essaie encore !";
+            }
+        }
+
+        return $this->render('jeu_enigme/enigma1.html.twig', [
+            'resultat' => $resultat,
+        ]);
     }
 
     #[Route('/enigma2', name: 'app_enigma2')]
-    public function engime2(): Response
+    public function engime2(Request $request): Response
     {
-        return $this->render('jeu_enigme/enigma2.html.twig');
+        $resultat = null;
+
+        if ($request->isMethod('POST')) {
+            $reponse = strtolower(trim($request->request->get('reponse')));
+
+            if ($reponse === '1950') {
+                return $this->render('jeu_enigme/jeu3.html.twig');
+            } else {
+                $resultat = "Mauvaise réponse, essaie encore !";
+            }
+        }
+
+        return $this->render('jeu_enigme/enigma2.html.twig', [
+            'resultat' => $resultat,
+        ]);
     }
 
     #[Route('/enigma3', name: 'app_enigma3')]
