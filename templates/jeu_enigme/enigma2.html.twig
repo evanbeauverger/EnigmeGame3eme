@@ -11,6 +11,7 @@
     body { background-color: yellow; }
     h3 { margin: 50px; }
     h1 { margin: 40px; }
+    button { margin: 15px; }
 </style>
 
 <head>
@@ -24,8 +25,11 @@ En quelle année est apparu la 1ère IA ?
 </h3>
 
 <form method="post">
-    <input type="number" name="reponse" required>
+    <input type="number" name="reponse" required><br/>
     <button type="submit" class="btn btn-primary">Valider</button>
+</form>
+<form action="/jeu2">
+    <button type="submit" class="btn btn-primary">Abandonner</button>
 </form>
 
 {% if resultat %}
