@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Team;
 use App\Form\TeamType;
+use App\Repository\EnigmaRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class JeuEnigmeController extends AbstractController
 {
@@ -133,5 +134,12 @@ final class JeuEnigmeController extends AbstractController
     public function engime5(): Response
     {
         return $this->render('jeu_enigme/enigma5.html.twig');
+    }
+
+    #[Route('/enigma/{id}', name: 'app_enigma')]
+    public function engime(EnigmaRepository $enigmaRepository, int $id): Response
+    {
+        $enigma = $enigmaRepository->find($id);
+        return $this->render('jeu_enigme/enigme1.html.twig', ['enigma' => $enigma]);
     }
 }
