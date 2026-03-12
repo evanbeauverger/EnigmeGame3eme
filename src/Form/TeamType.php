@@ -18,7 +18,7 @@ class TeamType extends AbstractType
             ->add('name')
             ->add('avatar', EntityType::class, [
                 'class' => Avatar::class,
-                'choice_label' => 'id',
+                'choice_label' => 'filename',
             ])
         ;
     }

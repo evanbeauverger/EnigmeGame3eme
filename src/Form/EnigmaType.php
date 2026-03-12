@@ -30,10 +30,6 @@ class EnigmaType extends AbstractType
             ])
             ->add('order_')
             ->add('secretcode')
-            ->add('game', EntityType::class, [
-                'class' => Game::class,
-                'choice_label' => 'title',
-            ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'email',

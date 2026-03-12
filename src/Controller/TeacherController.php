@@ -22,4 +22,10 @@ final class TeacherController extends AbstractController
     {
         return $this->render('teacher/gestion.html.twig');
     }
+
+    #[Route('/historique', name: 'app_historique')]
+    public function historique(): Response
+    {
+        return $this->render('teacher/historique.html.twig');
+    }
 }
