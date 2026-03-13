@@ -1,38 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Enigma{% endblock %}
+{% block title %}Enigme 1{% endblock %}
 
 {% block body %}
-    <h1>Enigma</h1>
+<style>
+    * { text-align: center; }
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    a { color: blue; }
+    body { background-color: yellow; }
+    h3 { margin: 50px; }
+    h1 { margin: 40px; }
+    button { margin: 15px; }
+</style>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ enigma.id }}</td>
-            </tr>
-            <tr>
-                <th>Order_</th>
-                <td>{{ enigma.order }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ enigma.title }}</td>
-            </tr>
-            <tr>
-                <th>Instruction</th>
-                <td>{{ enigma.instruction }}</td>
-            </tr>
-            <tr>
-                <th>Secretcode</th>
-                <td>{{ enigma.secretcode }}</td>
-            </tr>
-        </tbody>
-    </table>
+<head>
+    <title>Énigme sur les IA</title>
+</head>
 
-    <a href="{{ path('app_enigma_index') }}">back to list</a>
+<h1>{{ enigma.title }}</h1>
 
-    <a href="{{ path('app_enigma_edit', {'id': enigma.id}) }}">edit</a>
+<h3>
+{{ enigma.instruction }}
+</h3>
 
-    {{ include('enigma/_delete_form.html.twig') }}
+<form action="/jeu5">
+    <input type="text" name="reponse" required><br/>
+    <button type="submit" class="btn btn-primary">Valider</button>
+</form>
+<form action="/jeu5">
+    <button type="submit" class="btn btn-primary">Abandonner</button>
+</form>
+
+<img src="{{asset('images/openai.jpg')}}" />
+
 {% endblock %}

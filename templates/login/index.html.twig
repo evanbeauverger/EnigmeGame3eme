@@ -23,7 +23,7 @@
         <input type="password" id="password" name="_password" required>
         <br/><br/>
 
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
 
         <input type="hidden" name="_target_path" value="/teacher/gestion">
 
