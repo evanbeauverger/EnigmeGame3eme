@@ -3,39 +3,37 @@
 {% block body %}
     
     <style>
-        * { text-align: center; }
+    * { text-align: center; }
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    a { margin: 40px; color: blue; }
     </style>
 
-    <h1>Connexion</h1>
+    <h1>Connexion enseignant</h1><br/>
 
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <br/>
+     <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-    <form action="{{ path('app_login') }}" method="post" style="display:inline-block;">
-        <label for="username">Identifiant : </label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" required>
-        <br/><br/>
+        <label for="username">Email</label>
+        <input type="email" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus><br/><br/>
+        <label for="password">Password</label>
+        <input type="password" name="_password" id="password" autocomplete="current-password" required>
+        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}"><br/>
 
-        <label for="password">Mot de passe : </label>
-        <input type="password" id="password" name="_password" required>
-        <br/><br/>
-
-        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
-
-        <input type="hidden" name="_target_path" value="/teacher/gestion">
-
-        <button type="submit" class="btn btn-primary">Valider</button>
-    </form>
-
+        <button class="btn btn-primary mt-3" type="submit">
+            Valider
+        </button>
+    </form><br/>
     <form action="/" style="display:inline-block;">
-        <button type="submit" class="btn btn-primary">Retour</button>
+        <button type="submit" class="btn btn-primary">Retour</button><br/><br/>
     </form>
-    <br/><br/>
-    
     <form action="/user/new">
-        <button type="submit" class="btn btn-primary">Créez un compte</button>
+        <button type="submit" class="btn btn-primary">Créer un compte</button>
     </form>
 {% endblock %}

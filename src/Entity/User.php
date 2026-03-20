@@ -7,9 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -20,9 +22,9 @@ class User
     private ?string $email = null;
 
     #[ORM\Column(type: Types::ARRAY)]
-    private array $role = [];
+    private array $roles = [];
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 255)]
     private ?string $password = null;
 
     #[ORM\Column]
@@ -63,18 +65,23 @@ class User
         return $this;
     }
 
-    public function getRole(): array
+    public function getUserIdentifier(): string
     {
-        $role = $this->role;
-        // guarantee every user at least has ROLE_USER
-        $role[] = 'ROLE_USER';
-
-        return array_unique($role);
+        return (string) $this->email;
     }
 
-    public function setRole(array $role): static
+    public function getRoles(): array
     {
-        $this->role = $role;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
 
         return $this;
     }
@@ -155,5 +162,11 @@ class User
         }
 
         return $this;
+    }
+
+    #[\Deprecated]
+    public function eraseCredentials(): void
+    {
+        // @deprecated, to be removed when upgrading to Symfony 8
     }
 }

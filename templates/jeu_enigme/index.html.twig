@@ -20,6 +20,17 @@
     <form action="/equipe">
         <button type="submit" class="btn btn-primary">Jouer ( élève )</button><br/><br/>
     </form>
-    <img src="{{asset('images/accueil.jpg')}}" />
+    <img src="{{asset('images/accueil.jpg')}}" /><br/>
+    
+
+    {% if app.user %}
+        <form action="{{ path('app_gestion') }}">
+            <button type="submit" class="btn btn-primary">Gérer les parties</button><br/><br/>
+        </form><br/>
+        <form action="{{ path('app_logout') }}">
+            <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
+    {% endif %}
+        
 </div>
 {% endblock %}

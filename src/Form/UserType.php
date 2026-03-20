@@ -2,12 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\Game;
 use App\Entity\User;
-use App\Entity\Enigma;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
@@ -18,7 +15,7 @@ class UserType extends AbstractType
         $builder
             ->add('email')
             ->add('password')
-            ->add('role', ChoiceType::class, [
+            ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'User' => 'ROLE_USER',
                     'Admin' => 'ROLE_ADMIN',

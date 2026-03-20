@@ -10,7 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Email</th>
-                <th>Role</th>
+                <th>Roles</th>
                 <th>Is_verified</th>
                 <th>actions</th>
             </tr>
@@ -20,7 +20,7 @@
             <tr>
                 <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.role ? user.role|join(', ') : '' }}</td>
+                <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>
                 <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
