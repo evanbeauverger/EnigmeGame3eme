@@ -12,6 +12,11 @@
 </style>
 
 <div class="example-wrapper">
+    {% if app.user %}
+        <form action="{{ path('app_logout') }}">
+            <button type="submit" class="btn btn-primary">Se déconnecter</button>
+        </form>
+    {% endif %}
     <h1>Bienvenue dans le jeu d'énigmes informatique</h1><br/>
     
     <form action="/login">
@@ -20,6 +25,12 @@
     <form action="/equipe">
         <button type="submit" class="btn btn-primary">Jouer ( élève )</button><br/><br/>
     </form>
+    {% if app.user %}
+        <form action="{{ path('app_gestion') }}">
+            <button type="submit" class="btn btn-primary">Gérer les parties</button><br/><br/>
+        </form>
+    {% endif %}
     <img src="{{asset('images/accueil.jpg')}}" />
+    
 </div>
 {% endblock %}

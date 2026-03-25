@@ -17,6 +17,11 @@
 <head>
     <title>Énigme sur les IA</title>
 </head>
+{% if app.user %}
+    <form action="/enigma">
+        <button type="submit" class="btn btn-primary">Retour à la gestion</button>
+    </form>
+{% endif %}
 
 <h1>{{ enigma.title }}</h1>
 
@@ -24,8 +29,9 @@
 {{ enigma.instruction }}
 </h3>
 
-<form action="/menu_enigmes">
-    <input type="text" name="reponse" required><br/>
+<form action="/menu_enigmes" method="post">
+    <label for="answer">Réponse : </label>
+    <input type="text" name="answer" id="answer" required><br/><br/>
     <button type="submit" class="btn btn-primary">Valider</button>
 </form>
 <form action="/menu_enigmes">
