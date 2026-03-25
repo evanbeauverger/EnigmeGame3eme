@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Enigma;
-use App\Entity\Game;
 use App\Entity\Thumbnail;
 use App\Entity\Type;
 use App\Entity\User;
@@ -25,7 +24,7 @@ class EnigmaType extends AbstractType
             ->add('instruction')
             ->add('thumbnail', EntityType::class, [
                 'class' => Thumbnail::class,
-                'choice_label' => 'id',
+                'choice_label' => 'image',
                 'multiple' => true,
             ])
             ->add('order_')
