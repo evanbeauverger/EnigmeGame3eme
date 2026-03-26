@@ -12,9 +12,19 @@
     <h1>Enigmes</h1>
     <ul>
         {% for enigme in enigma %}
-            <li><form action="/enigma/{{enigme.id}}">
-                <button type="submit"  class="btn btn-primary">{{ enigme.title }}</button>
-            </form></li><br/>
+            <li>
+                {% if loop.first or enigma[loop.index0 - 1].id in resolved %}
+                    <form action="/enigma/{{ enigme.id }}">
+                        <button type="submit" class="btn btn-primary">
+                            {{ enigme.title }}
+                        </button>
+                    </form>
+                {% else %}
+                    <button class="btn btn-secondary" disabled>
+                        {{ enigme.title }}
+                    </button>
+                {% endif %}
+            </li><br/>
         {% endfor %}
     </ul>
     

@@ -42,9 +42,29 @@ final class EnigmaController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_enigma_show', methods: ['GET'])]
-    public function show(Enigma $enigma): Response
+    #[Route('/{id}', name: 'app_enigma_show', methods: ['GET', 'POST'])]
+    public function show(Request $request, Enigma $enigma): Response
     {
+        if ($request->isMethod('POST')) {
+
+            $answer = $request->request->get('answer');
+
+            if (strtolower(trim($answer)) === strtolower($enigma->getSecretcode())) {
+
+                $session = $request->getSession();
+                $resolved = $session->get('resolved_enigmas', []);
+
+                if (!in_array($enigma->getId(), $resolved)) {
+                    $resolved[] = $enigma->getId();
+                }
+
+                $session->set('resolved_enigmas', $resolved);
+
+                return $this->redirectToRoute('app_menu_enigmes');
+            }
+            $this->addFlash('error', 'Mauvaise réponse, réessaie.');
+        }
+
         return $this->render('enigma/show.html.twig', [
             'enigma' => $enigma,
         ]);
