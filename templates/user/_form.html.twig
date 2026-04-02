@@ -1,4 +1,7 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.roles) }}
+    {{ form_row(form.plainPassword) }} {# nouveau champ #}
+    {{ form_row(form.is_verified) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

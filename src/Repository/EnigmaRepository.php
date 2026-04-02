@@ -16,6 +16,16 @@ class EnigmaRepository extends ServiceEntityRepository
         parent::__construct($registry, Enigma::class);
     }
 
+    /**
+    * @return Enigma[]
+    */
+    public function findAllOrdered(): array
+    {
+        return $this->createQueryBuilder('e')
+            ->orderBy('e.order_', 'ASC')  // Tri par champ order_
+            ->getQuery()
+            ->getResult();
+    }
     //    /**
     //     * @return Enigma[] Returns an array of Enigma objects
     //     */

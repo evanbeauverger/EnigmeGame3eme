@@ -13,7 +13,13 @@
     <ul>
         {% for enigme in enigma %}
             <li>
-                {% if loop.first or enigma[loop.index0 - 1].id in resolved %}
+                {% if enigme.id in resolved %}
+                    <form action="/enigma/{{ enigme.id }}">
+                        <button type="submit" class="btn btn-success" disabled>
+                            {{ enigme.title }}
+                        </button>
+                    </form>
+                {% elseif loop.first or enigma[loop.index0 - 1].id in resolved %}
                     <form action="/enigma/{{ enigme.id }}">
                         <button type="submit" class="btn btn-primary">
                             {{ enigme.title }}
@@ -28,7 +34,7 @@
         {% endfor %}
     </ul>
     
-    <form action="/equipe">
+    <form action="/team/new">
         <button type="submit" class="btn btn-primary">Retour</button>
     </form>
 </div>

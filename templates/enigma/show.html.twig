@@ -42,6 +42,8 @@
     <button type="submit" class="btn btn-primary">Abandonner</button>
 </form>
 
-<img src="{{asset('images/openai.jpg')}}" />
+{% for thumb in enigma.thumbnail %}
+    <img src="{{ asset('images/' ~ thumb.image) }}" />
+{% endfor %}
 
 {% endblock %}

@@ -51,7 +51,7 @@ final class JeuEnigmeController extends AbstractController
     #[Route('/menu_enigmes', name: 'app_menu_enigmes')]
     public function menu_enigmes(EnigmaRepository $enigmaRepository, Request $request): Response
     {
-        $enigma = $enigmaRepository->findAll();
+        $enigma = $enigmaRepository->findAllOrdered();
 
         $resolved = $request->getSession()->get('resolved_enigmas', []);
 

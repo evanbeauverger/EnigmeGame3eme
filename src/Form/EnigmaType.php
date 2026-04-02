@@ -16,23 +16,30 @@ class EnigmaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
+            ->add('title', null, [
+                'label' => 'Titre : ', ])
             ->add('type', EntityType::class, [
                 'class' => Type::class,
                 'choice_label' => 'label',
+                'label' => 'Type : ',
             ])
-            ->add('instruction')
+            ->add('instruction', null, [
+                'label' => 'Instruction : ', ])
             ->add('thumbnail', EntityType::class, [
                 'class' => Thumbnail::class,
                 'choice_label' => 'image',
                 'multiple' => true,
+                'label' => 'Image : ',
             ])
-            ->add('order_')
-            ->add('secretcode')
+            ->add('order_', null, [
+                'label' => 'N° de l\'énigme : ', ])
+            ->add('secretcode', null, [
+                'label' => 'Réponse : ', ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'email',
                 'multiple' => true,
+                'label' => 'Fait par : ',
             ])
         ;
     }

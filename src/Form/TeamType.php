@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Avatar;
-use App\Entity\Game;
 use App\Entity\Team;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -15,10 +14,11 @@ class TeamType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
+            ->add('name', null, ['label' => 'Nom de l’équipe : ',])
             ->add('avatar', EntityType::class, [
                 'class' => Avatar::class,
                 'choice_label' => 'filename',
+                'label' => 'Avatar : ',
             ])
         ;
     }
