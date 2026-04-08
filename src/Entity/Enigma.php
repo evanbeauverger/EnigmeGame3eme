@@ -32,6 +32,18 @@ class Enigma
     #[ORM\Column(length: 100)]
     private ?string $secretcode = null;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $optionA = null;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $optionB = null;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $optionC = null;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $optionD = null;
+
     /**
      * @var Collection<int, Thumbnail>
      */
@@ -177,4 +189,16 @@ class Enigma
 
         return $this;
     }
+
+    public function getOptionA(): ?string { return $this->optionA; }
+    public function setOptionA(?string $optionA): self { $this->optionA = $optionA; return $this; }
+
+    public function getOptionB(): ?string { return $this->optionB; }
+    public function setOptionB(?string $optionB): self { $this->optionB = $optionB; return $this; }
+
+    public function getOptionC(): ?string { return $this->optionC; }
+    public function setOptionC(?string $optionC): self { $this->optionC = $optionC; return $this; }
+
+    public function getOptionD(): ?string { return $this->optionD; }
+    public function setOptionD(?string $optionD): self { $this->optionD = $optionD; return $this; }
 }

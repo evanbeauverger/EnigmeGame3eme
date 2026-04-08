@@ -1,0 +1,15 @@
+{# templates/enigma/type.html.twig #}
+
+<h2>Choisir un type d'énigme</h2>
+
+<p>Sélectionne le type d’énigme que tu souhaites créer :</p>
+
+<ul>
+    {% for type in types %}
+        <li>
+            <a href="{{ path('app_enigma_new', {typeId: type.id}) }}">
+                {{ type.label }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

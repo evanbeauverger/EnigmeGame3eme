@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Enigme 1{% endblock %}
+{% block title %}{{ enigma.title }}{% endblock %}
 
 {% block body %}
 <style>
@@ -17,6 +17,7 @@
 <head>
     <title>Énigme sur les IA</title>
 </head>
+
 {% if app.user %}
     <form action="/enigma">
         <button type="submit" class="btn btn-primary">Retour à la gestion</button>
@@ -24,20 +25,39 @@
 {% endif %}
 
 <h1>{{ enigma.title }}</h1>
-
-<h3>
-{{ enigma.instruction }}
-</h3>
+<h3>{{ enigma.instruction }}</h3>
 
 {% for message in app.flashes('error') %}
     <div class="alert alert-danger">{{ message }}</div>
 {% endfor %}
 
 <form method="post">
-    <label for="answer">Réponse : </label>
-    <input type="text" name="answer" id="answer" required><br/><br/>
+    {% set typeLabel = enigma.type ? enigma.type.label : '' %}
+
+    {% if typeLabel == 'question libre' %}
+        <label for="answer">Réponse : </label>
+        <input type="text" name="answer" id="answer" required><br/><br/>
+
+    {% elseif typeLabel == 'question à choix' %}
+        {% set options = ['A', 'B', 'C', 'D'] %}
+        {% for letter in options %}
+            {% set value = attribute(enigma, 'option' ~ letter) %}
+            {% if value %}
+                <input type="radio" name="answer" id="option{{ letter }}" value="{{ value }}" required>
+                <label for="option{{ letter }}">{{ letter }} : {{ value }}</label><br/>
+            {% endif %}
+        {% endfor %}
+
+    {% elseif typeLabel == 'vrai/faux' %}
+        <input type="radio" name="answer" id="vrai" value="Vrai" required>
+        <label for="vrai">Vrai</label><br/>
+        <input type="radio" name="answer" id="faux" value="Faux" required>
+        <label for="faux">Faux</label><br/>
+    {% endif %}
+
     <button type="submit" class="btn btn-primary">Valider</button>
 </form>
+
 <form action="/menu_enigmes">
     <button type="submit" class="btn btn-primary">Abandonner</button>
 </form>
