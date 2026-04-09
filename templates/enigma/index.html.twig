@@ -3,30 +3,30 @@
 {% block title %}Enigma index{% endblock %}
 
 {% block body %}
-    <h1>Enigma index</h1>
+    <h1>Liste des énigmes</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Order_</th>
-                <th>Title</th>
+                <th>N°</th>
+                <th>Titre</th>
                 <th>Instruction</th>
-                <th>Secretcode</th>
+                <th>Réponse</th>
+                <th>Type<th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for enigma in enigmas %}
             <tr>
-                <td>{{ enigma.id }}</td>
                 <td>{{ enigma.order }}</td>
                 <td>{{ enigma.title }}</td>
                 <td>{{ enigma.instruction }}</td>
                 <td>{{ enigma.secretcode }}</td>
+                <td>{{ enigma.type.label }}</td>
                 <td>
-                    <a href="{{ path('app_enigma_show', {'id': enigma.id}) }}">show</a>
-                    <a href="{{ path('app_enigma_edit', {'id': enigma.id}) }}">edit</a>
+                    <a href="{{ path('app_enigma_show', {'id': enigma.id}) }}">voir</a>
+                    <a href="{{ path('app_enigma_edit', {'id': enigma.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -37,6 +37,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_enigma_choose_type') }}">Create new</a>
+    <a href="{{ path('app_enigma_choose_type') }}">Créer une énigme</a>
     <a href="/teacher/gestion">Retour</a>
 {% endblock %}

@@ -11,7 +11,19 @@ class TypeFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $type = new Type();
-        $type->setLabel("question");
+        $type->setLabel("question libre");
+        $manager->persist($type);
+
+        $type = new Type();
+        $type->setLabel("question libre");
+        $manager->persist($type);
+
+        $type = new Type();
+        $type->setLabel("question à choix");
+        $manager->persist($type);
+
+        $type = new Type();
+        $type->setLabel("vrai/faux");
         $manager->persist($type);
 
         $manager->flush();
