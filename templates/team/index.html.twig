@@ -3,15 +3,14 @@
 {% block title %}Team index{% endblock %}
 
 {% block body %}
-    <h1>Team index</h1>
+    <h1>Liste des équipes</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Position</th>
-                <th>Current_enigma</th>
+                <th>Enigme actuelle</th>
                 <th>Note</th>
                 <th>actions</th>
             </tr>
@@ -25,8 +24,8 @@
                 <td>{{ team.currentEnigma }}</td>
                 <td>{{ team.note }}</td>
                 <td>
-                    <a href="{{ path('app_team_show', {'id': team.id}) }}">show</a>
-                    <a href="{{ path('app_team_edit', {'id': team.id}) }}">edit</a>
+                    <a href="{{ path('app_team_show', {'id': team.id}) }}">voir</a>
+                    <a href="{{ path('app_team_edit', {'id': team.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -37,6 +36,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_team_new') }}">Create new</a>
+    <a href="{{ path('app_team_new') }}">Créer une nouvelle équipe</a>
     <a href="/teacher/gestion">Retour</a>
 {% endblock %}
