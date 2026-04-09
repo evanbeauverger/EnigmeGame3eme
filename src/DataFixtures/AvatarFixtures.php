@@ -13,18 +13,22 @@ class AvatarFixtures extends Fixture
         $avatar = new Avatar();
         $avatar->setFilename('Ours');
         $manager->persist($avatar);
+        $this->addReference('ours', $avatar);
 
         $avatar = new Avatar();
         $avatar->setFilename('Lapin');
         $manager->persist($avatar);
+        $this->addReference('lapin', $avatar);
 
         $avatar = new Avatar();
         $avatar->setFilename('Poulet');
         $manager->persist($avatar);
+        $this->addReference('poulet', $avatar);
 
         $avatar = new Avatar();
         $avatar->setFilename('Renard');
         $manager->persist($avatar);
+        $this->addReference('renard', $avatar);
 
         $manager->flush();
     }

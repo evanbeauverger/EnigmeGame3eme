@@ -14,14 +14,14 @@ class UserFixtures extends Fixture
         $user->setEmail('superadmin@free.fr');
         $user->setPassword('superadmin');
         $user->setIsVerified(true);
-        $user->setRole(['ROLE_SUPER_ADMIN']);
+        $user->setRoles(['ROLE_SUPER_ADMIN']);
         $manager->persist($user);
 
         $user = new User();
         $user->setEmail('admin@free.fr');
         $user->setPassword('admin');
         $user->setIsVerified(true);
-        $user->setRole(['ROLE_ADMIN']);
+        $user->setRoles(['ROLE_ADMIN']);
         $manager->persist($user);
 
         $manager->flush();
